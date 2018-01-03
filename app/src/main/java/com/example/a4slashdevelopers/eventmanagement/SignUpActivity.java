@@ -79,7 +79,7 @@ public class SignUpActivity extends AppCompatActivity {
              // password matching with confirm password
              if (password.equals(confirmpassword))
              {
-                 // password match
+                 // password match hua to 
                  // Firebase Methods call
              }
              else
