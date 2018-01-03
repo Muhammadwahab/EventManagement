@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/EventManagement.iml" filepath="$PROJECT_DIR$/EventManagement.iml" />
+      <module fileurl="file://D:\Android Development\EventManagement\EventManagement.iml" filepath="D:\Android Development\EventManagement\EventManagement.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\Android Development\EventManagement\app\app.iml" filepath="D:\Android Development\EventManagement\app\app.iml" />
     </modules>
   </component>
 </project>
