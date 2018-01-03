@@ -43,7 +43,7 @@ public class SignUpActivity extends AppCompatActivity {
     {
 
         isEmailValidate( ((EditText)findViewById(R.id.emailidsignup)).getText().toString().trim());
-        ispasswordValidate(((EditText)findViewById(R.id.passwordidsignup)).getText().toString().trim());
+        ispasswordValidate(((EditText)findViewById(R.id.passwordidsignup)).getText().toString().trim(),((EditText)findViewById(R.id.confirmpasswordidsignup)).getText().toString().trim());
     }
     void isEmailValidate(String email)
     {
@@ -58,7 +58,7 @@ public class SignUpActivity extends AppCompatActivity {
                 Toast.makeText(this, "valid Email", Toast.LENGTH_SHORT).show();
 
     }
-    void ispasswordValidate(String password){
+    void ispasswordValidate(String password,String confirmpassword){
 
         final String PASSWORD_REGEXP =
                 "^"
@@ -77,6 +77,19 @@ public class SignUpActivity extends AppCompatActivity {
          if (matcher.matches())
          {
              Toast.makeText(this, "valid", Toast.LENGTH_SHORT).show();
+             // password matching with confirm password
+             if (password.equals(confirmpassword))
+             {
+                 // password match
+             }
+             else
+             {
+                 // password did not match
+             }
+
+
+
+
          }
          else
          {
