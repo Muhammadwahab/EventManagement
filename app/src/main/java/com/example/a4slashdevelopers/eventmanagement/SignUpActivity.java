@@ -43,7 +43,6 @@ public class SignUpActivity extends AppCompatActivity {
     {
 
         isEmailValidate( ((EditText)findViewById(R.id.emailidsignup)).getText().toString().trim());
-        ispasswordValidate(((EditText)findViewById(R.id.passwordidsignup)).getText().toString().trim(),((EditText)findViewById(R.id.confirmpasswordidsignup)).getText().toString().trim());
     }
     void isEmailValidate(String email)
     {
@@ -51,14 +50,14 @@ public class SignUpActivity extends AppCompatActivity {
             String regex = "^([_a-zA-Z0-9-]+(\\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*(\\.[a-zA-Z]{1,6}))?$";
             Pattern pattern = Pattern.compile(regex);
             Matcher matcher = pattern.matcher(email);
-            if (!matcher.matches()) {
+            if (!matcher.matches())
                 Toast.makeText(this, "Invalid Email", Toast.LENGTH_SHORT).show();
-            }
             else
-                Toast.makeText(this, "valid Email", Toast.LENGTH_SHORT).show();
+                ispasswordValidate(((EditText)findViewById(R.id.passwordidsignup)).getText().toString().trim(),((EditText)findViewById(R.id.confirmpasswordidsignup)).getText().toString().trim(),email);
+
 
     }
-    void ispasswordValidate(String password,String confirmpassword){
+    void ispasswordValidate(String password, String confirmpassword, String email){
 
         final String PASSWORD_REGEXP =
                 "^"
@@ -81,6 +80,7 @@ public class SignUpActivity extends AppCompatActivity {
              if (password.equals(confirmpassword))
              {
                  // password match
+                 // Firebase Methods call
              }
              else
              {
