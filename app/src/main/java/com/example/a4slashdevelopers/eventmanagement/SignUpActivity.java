@@ -1,13 +1,19 @@
 package com.example.a4slashdevelopers.eventmanagement;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -79,8 +85,10 @@ public class SignUpActivity extends AppCompatActivity {
              // password matching with confirm password
              if (password.equals(confirmpassword))
              {
-                 // password match hua to 
+                 // password match hua to
                  // Firebase Methods call
+
+                 signup(email,password);
              }
              else
              {
@@ -97,5 +105,27 @@ public class SignUpActivity extends AppCompatActivity {
 
          }
 
+    }
+
+    private void signup(String email,String password) {
+
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.e("SIGNUP", "createUserWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            // insert new user in database list
+
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.e("SIGNUP", "createUserWithEmail:failure", task.getException());
+                        }
+
+                        // ...
+                    }
+                });
     }
 }
