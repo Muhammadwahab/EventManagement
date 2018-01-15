@@ -15,6 +15,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -102,7 +104,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
-    private void signup(String email,String password) {
+    private void signup(final String email, String password) {
 
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -115,6 +117,12 @@ public class SignUpActivity extends AppCompatActivity {
                             user.sendEmailVerification();
                             // insert new user in database list
 
+                            Toast.makeText(SignUpActivity.this, "Confirmation mail send to your inbox", Toast.LENGTH_SHORT).show();
+
+                            insertuser(email);
+
+
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.e("SIGNUP", "createUserWithEmail:failure", task.getException());
@@ -123,5 +131,12 @@ public class SignUpActivity extends AppCompatActivity {
                         // ...
                     }
                 });
+    }
+    void insertuser(String email)
+    {
+        // Write a message to the database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("users");
+        myRef.push().child("email").setValue(email);
     }
 }
