@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
                             Log.d("Signin", "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             // check email verification
+                            startActivity(new Intent(getApplicationContext(),startactivity.class));
                             Toast.makeText(MainActivity.this, "User Sign is Successfully"+user.getEmail(), Toast.LENGTH_SHORT).show();
                         } else {
                             // If sign in fails, display a message to the user.
